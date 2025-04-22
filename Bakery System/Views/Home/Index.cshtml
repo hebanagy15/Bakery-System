@@ -1,0 +1,85 @@
+﻿@model Bakery_System.ViewModels.HomeViewModel
+@Model Bakery_System.Models
+@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- Header Section -->
+<div class="container-fluid p-0">
+    <div class="bg-dark text-white text-center position-relative"
+         style="background-image: url('/images/Background.jpeg'); background-size: cover; background-position: center; height: 600px;">
+        <div class="position-absolute top-50 start-50 translate-middle">
+            <h1 class="display-4 fw-bold">Freshly<br />Baked, Just For You</h1>
+            <div class="mt-4">
+                <a href="#" class="btn btn-warning btn-lg me-2">Make Reservation</a>
+                <a href="#" class="btn btn-light btn-lg">Delivery</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Our Most Popular -->
+<section class="container my-5">
+    <h2 class="text-center mb-4">Our Most Popular</h2>
+    <div class="row">
+        @foreach (var Item in Model.MostPopular)
+        {
+            <div class="col-md-4 mb-3">
+                <img src="@Item.ImageURL" class="img-fluid rounded" alt="@Item.Name" />
+            </div>
+        }
+    </div>
+</section>
+
+<!-- Our Offers -->
+<section class="py-5" style="background-color: #f8f2ed;">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Offers</h2>
+        <div class="row text-center">
+            @foreach (var offer in Model.Offers)
+            {
+                var discountedPrice = offer.Price - (offer.Price * offer.Discount / 100);
+                <div class="col-md-4 mb-4">
+                    <div class="position-relative">
+                        <img src="@offer.ImageURL" class="img-fluid rounded-circle mb-3" style="width: 150px;" alt="@offer.Name" />
+                        @if (offer.Discount > 0)
+                        {
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                @offer.Discount% OFF
+                            </span>
+                        }
+                    </div>
+                    <h5>@offer.Name</h5>
+                    <p>
+                        <del>@offer.Price.ToString("0.00") EGP</del>
+                        <span class="text-danger fw-bold ms-2">@discountedPrice.ToString("0.00") EGP</span>
+                    </p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+
+<!-- What We Serve (Categories) -->
+<section class="container my-5">
+    <h2 class="text-center mb-4">What We Serve</h2>
+    <p class="text-center">Explore Our Delicious Menu - What We Serve</p>
+    <div class="row text-center">
+        @foreach (var category in Model.Categories)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card border-0">
+                    <img src="@category.ImageURL" class="card-img-top rounded" alt="@category.Name" />
+                    <div class="card-body">
+                        <h5 class="card-title">@category.Name</h5>
+                        <a href="#" class="btn btn-outline-dark">View Items</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="text-end mt-3">
+        <a href="#" class="text-decoration-none">There's Much More to View →</a>
+    </div>
+</section>
