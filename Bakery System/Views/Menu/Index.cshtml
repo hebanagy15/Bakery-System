@@ -1,0 +1,22 @@
+﻿@model List<Category>
+
+@{
+    ViewData["Title"] = "Menu Categories";
+}
+
+<h1>Categories</h1>
+
+<div class="row">
+    @foreach (var category in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="@category.ImageURL" class="card-img-top" alt="@category.Name" style="height: 200px; object-fit: cover;">
+                <div class="card-body text-center">
+                    <h5 class="card-title">@category.Name</h5>
+                    <a href="@Url.Action("BakeryItems", "Menu", new { categoryId = category.ID })" class="btn btn-primary">View Products</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
