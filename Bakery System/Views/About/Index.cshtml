@@ -1,0 +1,160 @@
+﻿@{
+    ViewData["Title"] = "About Us";
+}
+
+<style>
+    .hero-section {
+        background-image: url('/images/about1.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 500px; 
+        position: relative;
+        color: white;
+        text-align: center;
+    }
+
+
+    .hero-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-70%, -80%);
+    }
+
+    .beige-bg {
+        background-color: #f8f1e7 !important;
+    }
+
+    .beige-text {
+        color: #6b4f3b;
+    }
+
+    .img-fluid-custom {
+        border-radius: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        max-height: 320px;
+        width: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+        .img-fluid-custom:hover {
+            transform: scale(1.02);
+        }
+
+    .testimonial-card {
+        background-color: #fff9f4;
+        border-radius: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        padding: 20px;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+</style>
+
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="hero-overlay">
+        <h1 class="display-4 fw-bold">About Us</h1>
+    </div>
+</div>
+
+<!-- Welcome Section -->
+<div class="container my-5">
+    <div class="row align-items-center p-4 rounded-4 beige-bg shadow-lg border" style="border: 2px solid #e0c8a7;">
+        <div class="col-md-6 mb-4 mb-md-0">
+            <img src="/images/about2.jpg" class="img-fluid-custom" alt="Bakery Setup" />
+        </div>
+        <div class="col-md-6 animate-fade">
+            <h2 class="fw-bold beige-text">Home sweet bakery</h2>
+            <p class="text-muted">
+                At our bakery, we believe in the joy of freshly baked goods. Each product is made with love and care to give you a warm, sweet experience.
+            </p>
+            <h5 class="fw-bold">Opening Hours :</h5>
+            <p>
+                Sunday - Thursday: <strong>9:00 - 18:00</strong><br />
+                Friday - Saturday: <strong>11:00 - 20:00</strong>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Stats Section -->
+<div class="text-white text-center py-5"
+     style="background-image: url('/images/about3.jpg'); background-size: cover; background-position: center;">
+    <div class="bg-dark bg-opacity-50 p-4 rounded-3 d-inline-block">
+        <h2 class="mb-4 fw-bold">We Are The Best</h2>
+        <h4>500+ Deliveries a day</h4>
+        <h4>100+ Reservations a day</h4>
+    </div>
+</div>
+
+<!-- Reviews Section -->
+<div class="container my-5">
+    <h3 class="text-center mb-4 beige-text">Hundreds of People Loved Us</h3>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="testimonial-card">
+                <p>"Amazing service and the croissants are to die for!"</p>
+                <strong>- Mariam B.</strong>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="testimonial-card">
+                <p>"Best bakery in town. Friendly staff and cozy place."</p>
+                <strong>- Heba N.</strong>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="testimonial-card">
+                <p>"Delicious cakes. Always fresh and made with care."</p>
+                <strong>- Menna E.</strong>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="testimonial-card">
+                <p>"We always order from here for family gatherings."</p>
+                <strong>- Fatma N.</strong>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="testimonial-card">
+                <p>"The pastries are always fresh and full of flavor!"</p>
+                <strong>- Eman K.</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Section -->
+<footer class="bg-dark text-white py-4 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <h5>Bakery</h5>
+            </div>
+            <div class="col-md-4 mb-3">
+                <h6>Section</h6>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Home</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Menu</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Reservation</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 mb-3">
+                <h6>Section</h6>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Contact</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">About</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Log In</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>

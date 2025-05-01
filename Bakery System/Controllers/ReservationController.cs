@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Bakery_System.Models;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Bakery_System.Controllers
 {
@@ -13,13 +16,11 @@ namespace Bakery_System.Controllers
             _context = context;
         }
 
-        // GET: /Reservation/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: /Reservation/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Reservation reservation)
@@ -27,13 +28,18 @@ namespace Bakery_System.Controllers
             if (ModelState.IsValid)
             {
                 reservation.CreationDate = DateTime.Now;
-
                 reservation.TableId = 1;
                 reservation.CustomerId = 1;
 
                 _context.Reservations.Add(reservation);
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction("ReservationSuccess");
+            }
+
+            foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+            {
+                Console.WriteLine(error.ErrorMessage);
             }
 
             return View(reservation);
