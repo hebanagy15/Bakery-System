@@ -27,6 +27,6 @@ namespace Bakery_System.Models
 
 
 
-        public ICollection<OrderItem> OrderItems { get; set; }
+        public List<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
     }
 }
