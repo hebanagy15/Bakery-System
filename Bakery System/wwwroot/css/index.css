@@ -1,0 +1,261 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Lato, sans-serif;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  background: url('/images/Background.jpeg') center/cover no-repeat;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Black color with 60% opacity */
+  z-index: 1; /* Ensure the overlay is behind the content */
+}
+
+.hero-content {
+  text-align: center;
+  color: #fff;
+  z-index: 2; /* Ensure the content is on top of the overlay */
+}
+
+.hero-title {
+  font-size: 5em;
+  margin-bottom: 20px;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.hero .hero-buttons .hero-button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 1.4em;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  background-color: #b28158;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.hero-buttons {
+  margin-top: 100px;
+}
+
+.hero .hero-buttons .hero-button:hover {
+  background-color: transparent !important;
+  border: 2px solid #b28158;
+  color: aliceblue !important;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Most Popular Section */
+
+.popular-section {
+  padding: 40px;
+  background: #fff;
+  font-family: "Poppins", sans-serif;
+}
+
+/* .popular-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+} */
+
+.image-1,
+.image-2 {
+  width: 45%;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.popular-content {
+  max-width: 400px;
+}
+
+.divider {
+  width: 100px;
+  height: 1px;
+  background-color: #ccc;
+  margin: 10px auto 20px auto;
+  position: relative;
+}
+
+.divider::before,
+.divider::after {
+  content: "❀❀❀";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  color: #aaa;
+}
+
+.popular-content h3 {
+  font-size: 40px;
+  color: #643208;
+  font-style: italic;
+  margin-bottom: 20px;
+  font-family: Lato, sans-serif;
+}
+
+.popular-content p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.popular-images {
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.order-button {
+  background-color: #b88653;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.order-button:hover {
+  background-color: #a87441;
+}
+
+/* our offers */
+
+.offers-section {
+  padding: 40px;
+  background: #f8ece0;
+  font-family: "Poppins", sans-serif;
+}
+
+.offers-container {
+  animation: fadeInUp 1s ease-in-out;
+}
+
+/* What we serve */
+.menu-categories {
+  text-align: center;
+  padding: 40px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.menu-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 70px;
+  margin-bottom: 20px;
+}
+
+.menu-card {
+  width: 200px;
+  height: 220px;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.menu-card:hover {
+  transform: scale(1.05);
+}
+.menu-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  z-index: 1;
+  border-radius: 20px;
+}
+.menu-card h3 {
+  font-size: 20px;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0;
+  z-index: 2;
+}
+
+.menu-card hr {
+  width: 60px;
+  margin: 10px auto;
+  border: 1px solid white;
+  z-index: 2;
+}
+.menu-card p {
+  z-index: 2;
+}
+
+.menu-card p a {
+  font-size: 16px;
+  font-style: italic;
+  margin: 0;
+  text-decoration: none;
+  color: white;
+}
+
+.pastry {
+  background-image: url('/images/Home assests/pastry-wws.jpg'); /* Add pastry image here */
+}
+
+.dessert {
+  background-image: url('/images/Home assests/cookies-wws.jpg'); /* Add dessert image here */
+}
+
+.drinks {
+  background-image: url('/images/Home assests/drinks-wws.jpg'); /* Add drinks image here */
+}
+.view-more {
+  text-align: right;
+  margin-right: 50px;
+}
+.view-more a {
+  color: #a87441;
+  font-size: 17px;
+  font-style: italic;
+
+  font-weight: bold;
+  text-decoration: none;
+}
+
+footer {
+  color: #fff !important;
+}
