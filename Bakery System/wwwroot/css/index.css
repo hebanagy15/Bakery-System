@@ -80,19 +80,21 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* .popular-container {
+.popular-container {
   display: flex;
+  flex-direction:row;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: 10px;
   flex-wrap: wrap;
-} */
+}
+
 
 .image-1,
 .image-2 {
-  width: 45%;
-  border-radius: 20px;
-  object-fit: cover;
+    width: 45%;
+    border-radius: 20px;
+    object-fit: cover;
 }
 
 .popular-content {

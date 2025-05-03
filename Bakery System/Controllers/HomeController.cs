@@ -22,7 +22,7 @@ public class HomeController : Controller
      {
             var mostPopular = await _context.BakeryItems
                 .OrderByDescending(p => p.SalesCount) 
-                .Take(5)
+                .Take(2)
                 .ToListAsync();
 
             var offers = await _context.BakeryItems

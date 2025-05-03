@@ -82,13 +82,24 @@
             Our Most Popular
         </h2>
         <div class="divider"></div>
-        <div class="popular-container container d-sm-flex justify-content-center">
-            <div class="popular-images col-lg-7 col-md-7 col-sm-12">
-                <img src="images/Home assests/most popular1.jpg"
-                     alt="Pizza varieties"
-                     class="image-1" />
-                <img src="images/Home assests/most popular2.jpg" alt="Pastries" class="image-2" />
-            </div>
+
+
+        <!--connect with database-->
+
+        <div class="popular-container container row justify-content-center">
+            @foreach (var item in Model.MostPopular)
+            {
+                <div class="popular-container container d-sm-flex justify-content-center">
+                    <div class="popular-images col-lg-7 col-md-7 col-sm-12">
+                        <img src="@item.ImageURL" alt="Pizza varieties" class="image-1" />
+                        
+                    </div>
+                </div>
+            }
+        
+        <!--end connect-->
+
+
             <div class="popular-content col-lg-2 col-md-3 col-sm-12">
                 <h3 class="fw-bolder">Morning <br />special</h3>
                 <p>
