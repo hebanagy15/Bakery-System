@@ -33,7 +33,7 @@ namespace Bakery_System.Models
         [Display(Name = "Customer ID")]
         public int CustomerId { get; set; } // Foreign Key
 
-        [ForeignKey("TableId")]
+        [ForeignKey("CustomerId")]
         public Customer Customer { get; set; } // Navigation Property
 
         
