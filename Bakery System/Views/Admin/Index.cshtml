@@ -1,0 +1,38 @@
+﻿@model List<BakeryItem>
+
+@{
+    Layout = "_Layout";
+}
+
+<h1>Bakery Item Page</h1>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Discount</th>
+        <th>QuantityInStock</th>
+        <th>ImageURL</th>
+        <th>CategoryId</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Name</td>
+            <td>@item.Description</td>
+            <td>@item.Price</td>
+            <td>@item.Discount</td>
+            <td>@item.QuantityInStock</td>
+            <td>@item.ImageURL</td>
+            <td>@item.CategoryId</td>
+
+        </tr>
+    }
+</table>
+
+<a class="btn btn-danger" asp-controller="Admin" asp-action="AddItem">Add Item</a>

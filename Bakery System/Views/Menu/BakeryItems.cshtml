@@ -4,6 +4,10 @@
     ViewData["Title"] = "BakeryItems";
 }
 
+@{
+    Layout = "_Layout";
+}
+
 <h1 class="mb-4">@ViewBag.CategoryName Products</h1>
 
 @if (Model != null && Model.Count > 0)

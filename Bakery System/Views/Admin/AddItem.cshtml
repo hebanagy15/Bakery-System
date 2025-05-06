@@ -1,0 +1,46 @@
+﻿@model BakeryItem
+
+<!DOCTYPE html>
+@{
+    Layout = "_Layout";
+}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Item Form</title>
+</head>
+<body>
+    <h2>Item Form</h2>
+
+    <form asp-controller="Admin" asp-action="AddProduct" method="post">
+
+
+        <label for="ItemName">Product Name:</label><br>
+        <input asp-for="Name" type="text" id="ItemName" required><br><br>
+
+        <label for="Description">Product Description:</label><br>
+        <input asp-for="Description" type="text" id="Description" required><br><br>
+
+        <label for="price">Price:</label><br>
+        <input asp-for="Price" type="number" id="price" step="0.01" required><br><br>
+
+        <label for="Discount">Discount:</label><br>
+        <input asp-for="Discount" type="number" id="Discount"  required><br><br>
+
+        <label for="quantity">Quantity:</label><br>
+        <input asp-for="QuantityInStock" type="number" id="quantity" required><br><br>
+
+        <label for="ImageURL">ImageURL:</label><br>
+        <input asp-for="ImageURL" type="text" id="ImageURL" required><br><br>
+
+        <label for="CategoryId">Category ID:</label><br>
+        <input asp-for="CategoryId" type="number" id="CategoryId" required><br><br>
+
+
+
+        <input class="btn btn-primary" type="submit" value="Add Product">
+    </form>
+</body>
+</html>

@@ -1,6 +1,10 @@
 ﻿@model Bakery_System.Models.Reservation
 
 @{
+    Layout = "_Layout";
+}
+
+@{
     ViewData["Title"] = "Make Reservation";
     var customers = ViewBag.Customers as List<Bakery_System.Models.Customer>;
     var tables = ViewBag.Tables as List<Bakery_System.Models.Table>;
