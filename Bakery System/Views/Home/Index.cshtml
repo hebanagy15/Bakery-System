@@ -89,19 +89,12 @@
         <!--connect with database-->
 
         <div class="popular-container container row justify-content-center">
-            @foreach (var item in Model.MostPopular)
-            {
-                <div class="popular-container container d-sm-flex justify-content-center">
-                    <div class="popular-images col-lg-7 col-md-7 col-sm-12">
-                        <img src="@item.ImageURL" alt="Pizza varieties" class="image-1" />
-
-                    </div>
-                </div>
-            }
-        
-        <!--end connect-->
-
-
+            <div class="popular-images col-lg-7 col-md-7 col-sm-12 d-flex flex-wrap justify-content-center">
+                @foreach (var item in Model.MostPopular)
+                {
+                    <img src="@item.ImageURL" alt="Pizza varieties" class="image-1" />
+                }
+            </div>
             <div class="popular-content col-lg-2 col-md-3 col-sm-12">
                 <h3 class="fw-bolder">Morning <br />special</h3>
                 <p>
@@ -113,6 +106,11 @@
                 <button class="order-button fw-bold fs-5">Order Now !</button>
             </div>
         </div>
+        <!--end connect-->
+
+
+           
+        
     </section>
 
     <!-- our offers -->
