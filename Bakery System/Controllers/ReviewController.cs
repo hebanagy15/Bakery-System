@@ -1,6 +1,7 @@
 ﻿using Bakery_System.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 namespace Bakery_System.Controllers
 {
@@ -16,7 +17,7 @@ namespace Bakery_System.Controllers
         // GET: Review/Contact
         public IActionResult Contact()
         {
-            // تحميل بيانات الـ BakeryItems من قاعدة البيانات وتمريرها إلى الـ View
+         
             ViewBag.BakeryItems = _context.BakeryItems.ToList();
             return View();
         }
@@ -32,6 +33,14 @@ namespace Bakery_System.Controllers
                 return View();
             }
 
+            
+            if (!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                ViewBag.Error = "Please enter a valid email address.";
+                ViewBag.BakeryItems = _context.BakeryItems.ToList();
+                return View();
+            }
+
             if (rating < 1 || rating > 5)
             {
                 ViewBag.Error = "Rating must be between 1 and 5.";
@@ -39,6 +48,7 @@ namespace Bakery_System.Controllers
                 return View();
             }
 
+           
             var customer = await _context.Customers.FirstOrDefaultAsync(c => c.Email == email);
             if (customer == null)
             {
@@ -47,6 +57,7 @@ namespace Bakery_System.Controllers
                 return View();
             }
 
+           
             var review = new Review
             {
                 CustomerId = customer.ID,

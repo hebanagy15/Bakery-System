@@ -1,47 +1,66 @@
 ﻿@model Bakery_System.Models.Reservation
 
 @{
-    ViewData["Title"] = "Make Your Reservation";
+    ViewData["Title"] = "Make Reservation";
+    var customers = ViewBag.Customers as List<Bakery_System.Models.Customer>;
+    var tables = ViewBag.Tables as List<Bakery_System.Models.Table>;
 }
 
 <div class="reservation-page" style="position: relative; padding: 80px 20px; min-height: 100vh; background: url('/images/reservationbg.jpg') no-repeat center center fixed; background-size: cover; width: 100%; font-family: 'Segoe UI', sans-serif;">
-
     <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.6); z-index: 1;"></div>
 
-    <div class="reservation-form" style="
-        position: relative;
-        z-index: 2;
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(10px);
-        padding: 40px;
-        border-radius: 20px;
-        max-width: 700px;
-        margin: auto;
-        color: white;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    ">
+    <div class="reservation-form" style="position: relative; z-index: 2; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(10px); padding: 40px; border-radius: 20px; max-width: 700px; margin: auto; color: white; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);">
         <h2 class="text-center" style="margin-bottom: 30px; font-weight: bold;">Make Your Reservation</h2>
 
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success text-center">@TempData["Success"]</div>
+        }
+
         <form asp-action="Create" method="post">
-            <div class="mb-4">
-                <label asp-for="ReservationDate">Date & Time</label>
-                <input asp-for="ReservationDate" class="form-control" type="datetime-local" style="background-color: #333; color: white; border: none;" />
+            @Html.AntiForgeryToken()
+
+            <div class="mb-3">
+                <label asp-for="CustomerId" class="form-label">Select Customer</label>
+                <select asp-for="CustomerId" class="form-control" style="background-color: #333; color: white;">
+                    <option value="">-- Select Customer --</option>
+                    @foreach (var c in customers)
+                    {
+                        <option value="@c.ID">@c.FullName</option>
+                    }
+                </select>
+                <span asp-validation-for="CustomerId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="TableId" class="form-label">Select Table</label>
+                <select asp-for="TableId" class="form-control" style="background-color: #333; color: white;">
+                    <option value="">-- Select Table --</option>
+                    @foreach (var t in tables)
+                    {
+                        <option value="@t.ID">Table #@t.TableNumber (Capacity: @t.Capacity)</option>
+                    }
+                </select>
+                <span asp-validation-for="TableId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ReservationDate" class="form-label">Reservation Date & Time</label>
+                <input asp-for="ReservationDate" type="datetime-local" class="form-control" style="background-color: #333; color: white;" />
                 <span asp-validation-for="ReservationDate" class="text-danger"></span>
             </div>
 
-            <div class="mb-4">
-                <label asp-for="DurationInHours">Guests</label>
-                <select asp-for="DurationInHours" class="form-control" style="background-color: #333; color: white; border: none;">
-                    <option value="1">1-2 Guests</option>
-                    <option value="2">3-4 Guests</option>
-                    <option value="3">5+ Guests</option>
+            <div class="mb-3">
+                <label asp-for="DurationInHours" class="form-label">Duration (Hours)</label>
+                <select asp-for="DurationInHours" class="form-control" style="background-color: #333; color: white;">
+                    <option value="1">1 Hour</option>
+                    <option value="2">2 Hours</option>
+                    <option value="3">3 Hours</option>
                 </select>
                 <span asp-validation-for="DurationInHours" class="text-danger"></span>
             </div>
 
-            <p class="text-center" style="color: #ccc; margin-bottom: 20px;">Please Notice that there is a 100 EGP deposit</p>
-
-            <button type="submit" class="btn" style="background-color: #A97455; color: white; border: none; width: 100%; padding: 15px; font-size: 18px; border-radius: 30px;">Book Now</button>
+            <button type="submit" class="btn" style="background-color: #A97455; color: white; border: none; width: 100%; padding: 15px; font-size: 18px; border-radius: 30px;">Reserve</button>
         </form>
     </div>
 </div>

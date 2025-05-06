@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Bakery_System.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Bakery_System.Models;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Bakery_System.Controllers
 {
@@ -16,38 +13,40 @@ namespace Bakery_System.Controllers
             _context = context;
         }
 
+        // GET: Reservation/Create
         public IActionResult Create()
         {
+            ViewBag.Customers = _context.Customers.ToList();
+            ViewBag.Tables = _context.Tables.ToList();
             return View();
         }
 
+        // POST: Reservation/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Reservation reservation)
         {
-            if (ModelState.IsValid)
+            // Debugging - Optional
+            Console.WriteLine("---- Incoming Reservation Data ----");
+            Console.WriteLine($"CustomerId: {reservation.CustomerId}");
+            Console.WriteLine($"TableId: {reservation.TableId}");
+            Console.WriteLine($"ReservationDate: {reservation.ReservationDate}");
+            Console.WriteLine($"Duration: {reservation.DurationInHours}");
+
+            if (!ModelState.IsValid)
             {
-                reservation.CreationDate = DateTime.Now;
-                reservation.TableId = 1;
-                reservation.CustomerId = 1;
-
-                _context.Reservations.Add(reservation);
-                await _context.SaveChangesAsync();
-
-                return RedirectToAction("ReservationSuccess");
+                ViewBag.Customers = _context.Customers.ToList();
+                ViewBag.Tables = _context.Tables.ToList();
+                return View(reservation);
             }
 
-            foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
-            {
-                Console.WriteLine(error.ErrorMessage);
-            }
+            reservation.CreationDate = DateTime.Now;
 
-            return View(reservation);
-        }
+            _context.Reservations.Add(reservation);
+            await _context.SaveChangesAsync();
 
-        public IActionResult ReservationSuccess()
-        {
-            return View();
+            TempData["Success"] = "Reservation created successfully!";
+            return RedirectToAction("Create");
         }
     }
 }
