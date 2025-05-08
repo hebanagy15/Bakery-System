@@ -44,7 +44,54 @@ namespace Bakery_System.Controllers
             return View(product);
         }
 
-        
+        public IActionResult EditBakeryItems(int id)
+        {
+            var product = _context.BakeryItems.Find(id);
+
+            if(product == null)
+            {
+                return Content("Invalid Item Id");
+            }
+
+            return View(product);
+        }
+
+        [HttpPost]
+        public IActionResult EditBakeryItems(BakeryItem Item)
+        {
+            _context.BakeryItems.Update(Item);
+            var res = _context.SaveChanges();
+
+            if(res > 0)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(Item);
+        }
+
+        [HttpPost]
+        public IActionResult deleteBakeryItems(int id)      
+        {
+            var product = _context.BakeryItems.Find(id);
+
+            if (product == null)
+            {
+                return Content("Item not found");
+            }
+            _context.BakeryItems.Remove(product);             // Hard Delete
+            var res = _context.SaveChanges();
+
+            if (res > 0)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return Content("Deletion Failed");
+        }
+
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
