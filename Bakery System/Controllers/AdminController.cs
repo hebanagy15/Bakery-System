@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System;
+using Bakery_System.ViewModels;
 
 namespace Bakery_System.Controllers
 {
@@ -19,8 +20,16 @@ namespace Bakery_System.Controllers
         public IActionResult Index()               // Product page
         {
             var bakeryItems = _context.BakeryItems.ToList();
+            var categories = _context.Categories.ToList();
 
-            return View(bakeryItems);
+            var viewModel = new ProductCategoryViewModel
+            {
+                BakeryItems = bakeryItems,
+                Categories = categories
+            };
+
+            return View(viewModel);
+
         }
 
         [HttpGet]

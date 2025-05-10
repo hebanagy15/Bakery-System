@@ -1,10 +1,9 @@
-﻿@model List<BakeryItem>
-
+﻿@using Bakery_System.ViewModels
+@model ProductCategoryViewModel
 @{
     Layout = "_Layout";
 }
-
-<h1>Bakery Item Page</h1>
+<h1>Admin Dashboard</h1>
 
 <table class="table table-bordered table-hover">
     <tr>
@@ -19,7 +18,7 @@
 
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.BakeryItems)
     {
         <tr>
             <td>@item.ID</td>
@@ -42,4 +41,25 @@
     }
 </table>
 
-<a class="btn btn-danger" asp-controller="Admin" asp-action="AddItem">Add Item</a>
+<a class="btn btn-danger" asp-controller="Admin" asp-action="AddItem">Add Item</a> <br /><br />
+
+    <table class="table table-bordered table-hover">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>ImageURL</th>
+        
+
+    </tr>
+
+    @foreach (var item in Model.Categories)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Name</td>
+            <td>@item.Description</td>
+            <td>@item.ImageURL</td>
+            
+        </tr>
+    }

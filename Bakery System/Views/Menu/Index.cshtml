@@ -4,23 +4,208 @@
     ViewData["Title"] = "Menu Categories";
 }
 
-@{
-    Layout = "_Layout";
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/index.css" />
+    <link rel="stylesheet" href="~/css/menu.css" />
+    <link rel="stylesheet" href="css/Home css/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <title>Bakery</title>
+</head>
+<body>
+    <header>
+        <!-- NavBat -->
+        <nav class="navbar navbar-expand-lg shadow"
+             style="background-color: #e5dccb">
+            <div class="container-fluid mx-2">
+                <a class="navbar-brand" href="#">
+                    <img style="width: 40%" src="images/Home assests/logo.png" alt="" />
+                </a>
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarText"
+                        aria-controls="navbarText"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-medium gap-4"
+                        style="font-size: 17px; border-bottom: 2px solid #ad9781">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item navbar-item">
+                            <a class="nav-link" asp-controller="About" asp-action="Index">About US</a>
+                        </li>
+                        <li class="nav-item navbar-item">
+                            <a class="nav-link" asp-controller="Menu" asp-action="Index">Menu</a>
+                        </li>
+                        <li class="nav-item navbar-item">
+                            <a class="nav-link" asp-controller="Reservation" asp-action="Create">Reservation</a>
+                        </li>
+                        <li class="nav-item navbar-item">
+                            <a class="nav-link" asp-controller="Review" asp-action="Contact">Contact Us</a>
 
-<h1>Categories</h1>
-
-<div class="row">
-    @foreach (var category in Model)
-    {
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="@category.ImageURL" class="card-img-top" alt="@category.Name" style="height: 200px; object-fit: cover;">
-                <div class="card-body text-center">
-                    <h5 class="card-title">@category.Name</h5>
-                    <a href="@Url.Action("BakeryItems", "Menu", new { categoryId = category.ID })" class="btn btn-primary">View Products</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex gap-3">
+                        <span class="navbar-text"> <a href="">Sign Up</a> </span>
+                        <span class="navbar-text"> | </span>
+                        <span class="navbar-text"> <a href="">Sign In</a> </span>
+                    </div>
                 </div>
             </div>
+        </nav>
+    </header>
+
+
+
+
+    
+    <!-- Hero Section -->
+    <section class="menu-hero">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="800">
+            <h1 class="hero-title" style="font-weight: bolder; font-size: 90px">
+                Menu
+            </h1>
+            <p style="font-style: italic">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                <br />
+                industry. Ipsu has been the industry's standard.
+            </p>
         </div>
-    }
-</div>
+    </section>
+
+    <!-- categories -->
+    <section class="categories">
+        <div class="container py-4">
+            <h2 class="products-heading mb-4 fs-1 text-capitalize"
+                style="color: #03193f; font-weight: 900">
+                categories
+            </h2>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                @foreach (var category in Model)
+                {
+                    <div class="col">
+                        <div class="product-card shadow">
+                            <img src="@category.ImageURL" class="product-img" alt="@category.Name" />
+                            <div class="product-info">
+                                <h5 class="product-title">@category.Name</h5>
+                                <a href="@Url.Action("BakeryItems", "Menu", new { id = category.ID })" class="product-arrow">
+
+                                    <span class="visually-hidden">More</span>
+                                    <svg width="1em"
+                                         height="1em"
+                                         viewBox="0 0 16 16"
+                                         class="bi bi-arrow-right"
+                                         fill="currentColor"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                              d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        
+    </section>
+        <!-- footer -->
+        <footer class="container-fluid py-5 border-top"
+                style="background-color: #212529"
+                data-aos="fade-up"
+                data-aos-duration="800">
+            <div class="row text-white text-center text-sm-start">
+                <div class="col-12 col-sm-6 col-md-3 mb-4">
+                    <img src="images/Home assests/logo.png"
+                         class="img-fluid w-50 mb-2"
+                         alt="Logo" />
+                    <p class="mb-0">© 2025</p>
+                </div>
+
+                <div class="col-6 col-md-3 mb-4">
+                    <h5>Section</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-white">Home</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-white">Features</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-white">Pricing</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-white">FAQs</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-white">About</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-md-3 mb-4">
+                    <h5>Section</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-white">Home</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-white">Features</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-white">Pricing</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-white">FAQs</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-white">About</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-12 col-md-3 mb-4">
+                    <h5>Section</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-white">Home</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-white">Features</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-white">Pricing</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-white">FAQs</a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-white">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+
+
+
+        
+    </body>
+</html>
