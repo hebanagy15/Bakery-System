@@ -100,7 +100,7 @@
                             <img src="@category.ImageURL" class="product-img" alt="@category.Name" />
                             <div class="product-info">
                                 <h5 class="product-title">@category.Name</h5>
-                                <a href="@Url.Action("BakeryItems", "Menu", new { id = category.ID })" class="product-arrow">
+                                <a href="@Url.Action("BakeryItems", "Menu", new { categoryId = category.ID })" class="product-arrow">
 
                                     <span class="visually-hidden">More</span>
                                     <svg width="1em"

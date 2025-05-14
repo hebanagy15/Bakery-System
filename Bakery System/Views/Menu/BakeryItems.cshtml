@@ -10,9 +10,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="~/css/index.css" />
-    <link rel="stylesheet" href="~/css/menu.css" />
-    <link rel="stylesheet" href="css/Home css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/menu.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Home css/bootstrap.min.css" asp-append-version="true" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -26,7 +27,8 @@
          style="background-color: #e5dccb">
         <div class="container-fluid mx-2">
             <a class="navbar-brand" href="#">
-                <img style="width: 40%" src="images/Home assests/logo.png" alt="" />
+                <img style="width: 40%" src="~/images/Home assests/logo.png" alt="" />
+
             </a>
             <button class="navbar-toggler"
                     type="button"
@@ -86,7 +88,7 @@
             <h2 class="mb-4 products-heading fs-1 text-capitalize mt-4"
                 style="color: #03193f; font-weight: 900"
                 data-aos="fade-up">
-                Breads
+                Items
             </h2>
             <div class="row g-4">
                 @foreach (var item in Model)
@@ -122,7 +124,9 @@
             data-aos-duration="800">
         <div class="row text-white text-center text-sm-start">
             <div class="col-12 col-sm-6 col-md-3 mb-4">
-                <img src="images/Home assests/logo.png"
+                
+                <img src="~/images/Home assests/logo.png"
+
                      class="img-fluid w-50 mb-2"
                      alt="Logo" />
                 <p class="mb-0">© 2025</p>
@@ -192,7 +196,8 @@
             </div>
         </div>
     </footer>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
