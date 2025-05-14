@@ -1,0 +1,47 @@
+﻿.reservation-hero {
+    position: relative;
+    background: url('/images/Home assests/reservation-bg.png') center/cover no-repeat;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reservation-container {
+    position: relative;
+    min-height: 100vh;
+    padding: 30px 15px;
+    background: transparent;
+    z-index: 1;
+}
+
+.reservation-card {
+    position: relative;
+    background: rgba(86, 86, 86, 0.381);
+    border-radius: 20px;
+    max-width: 750px;
+    width: 100%;
+    border: 2px solid #5a452b;
+    box-shadow: 0 10px 30px rgb(0, 0, 0);
+    z-index: 2;
+    backdrop-filter: blur(2px);
+    width: 30rem;
+}
+
+    .reservation-card .form-select {
+        border-radius: 8px;
+        text-align: center;
+    }
+
+.btn-book-now {
+    background-color: #6d5334 !important;
+    border-radius: 50px !important;
+    font-weight: 500;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+    .btn-book-now:hover {
+        background-color: #5a452b !important;
+    }

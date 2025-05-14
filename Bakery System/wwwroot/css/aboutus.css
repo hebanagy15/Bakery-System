@@ -1,0 +1,113 @@
+﻿.aboutus-hero {
+    position: relative;
+    background: url('/images/Home assests/aboutUs-Hero.png') center/cover no-repeat;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+    .aboutus-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.4); 
+        z-index: 1;
+        
+    }
+
+.hero-content {
+    text-align: center;
+    color: #fff;
+    z-index: 2; /* Ensure the content is on top of the overlay */
+}
+
+..hero-title {
+     font-size: 5em;
+  margin-bottom: 20px
+    animation: fadeInUp 1s ease-in-out;
+}
+
+/* stats */
+
+.stats {
+    background-image: url('/images/Home assests/stats-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 70vh;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #8c3d1546;
+}
+
+.stats-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    line-height: 4.4rem;
+    background-color: #5e2e0984;
+    border-radius: 20px;
+    padding: 2.5rem 3rem;
+    border: 3px solid #5e2e0995;
+}
+
+    .stats-text h1 {
+        font-size: 3rem;
+        margin: 0;
+        font-weight: 800;
+    }
+
+    .stats-text span {
+        font-size: 2rem;
+        font-weight: 400;
+    }
+
+/* Reviews */
+
+.reviews {
+    background-color: #c8c8c83b;
+    padding: 50px 0;
+}
+
+.review-header {
+    background-color: #ffefbb;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.review-card {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.star {
+    color: #ffc107;
+}
+
+@media (max-width: 768px) {
+    .review-card {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}

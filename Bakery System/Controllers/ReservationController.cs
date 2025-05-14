@@ -14,7 +14,7 @@ namespace Bakery_System.Controllers
         }
 
         // GET: Reservation/Create
-        public IActionResult Create()
+        public IActionResult create()
         {
             ViewBag.Customers = _context.Customers.ToList();
             ViewBag.Tables = _context.Tables.ToList();

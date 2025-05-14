@@ -2,163 +2,304 @@
     ViewData["Title"] = "About Us";
 }
 
-@{
-    Layout = "_Layout";
-}
-
-<style>
-    .hero-section {
-        background-image: url('/images/about1.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 500px; 
-        position: relative;
-        color: white;
-        text-align: center;
-    }
 
 
-    .hero-overlay {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-70%, -80%);
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/index.css" />
+    <link rel="stylesheet" href="~/css/aboutus.css" />
+    <link rel="stylesheet" href="~/css/menu.css" />
 
-    .beige-bg {
-        background-color: #f8f1e7 !important;
-    }
 
-    .beige-text {
-        color: #6b4f3b;
-    }
+    <link rel="stylesheet" href="~/css/Home css/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <title>Bakery</title>
+</head>
+<body>
+   
+    <header>
+        <!-- NavBat -->
+        <nav class="navbar navbar-expand-lg shadow"
+             style="background-color: #e5dccb">
+            <div class="container-fluid mx-2">
+                <a class="navbar-brand" href="#">
+                    <img style="width: 40%" src="images/Home assests/logo.png" alt="" />
+                </a>
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarText"
+                        aria-controls="navbarText"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-medium gap-4"
+                        style="font-size: 17px; border-bottom: 2px solid #ad9781">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item navbar-item">
+                            <a class="nav-link" asp-controller="About" asp-action="Index">About US</a>
+                        </li>
+                        <li class="nav-item navbar-item">
+                            <a class="nav-link" asp-controller="Menu" asp-action="Index">Menu</a>
+                        </li>
+                        <li class="nav-item navbar-item">
+                            <a class="nav-link" asp-controller="Reservation" asp-action="Create">Reservation</a>
+                        </li>
+                        <li class="nav-item navbar-item">
+                            <a class="nav-link" asp-controller="Review" asp-action="Contact">Contact Us</a>
 
-    .img-fluid-custom {
-        border-radius: 20px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        max-height: 320px;
-        width: 100%;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-    }
+                        </li>
+                    </ul>
+                    <div class="d-flex gap-3">
+                        <span class="navbar-text"> <a href="">Sign Up</a> </span>
+                        <span class="navbar-text"> | </span>
+                        <span class="navbar-text"> <a href="">Sign In</a> </span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-        .img-fluid-custom:hover {
-            transform: scale(1.02);
-        }
+    <!-- Hero Section -->
+    <section class="aboutus-hero">
+  <div class="hero-content">
+    <h1 class="hero-title">About Us</h1>
+    <p>
+      At our bakery, the smell of freshly baked goodies welcomes you in — soft breads, flaky pastries, and sweet treats made daily with care and passion.
+      <br />
+      industry. Ipsu has been the industry's standard.
+    </p>
+  </div>
+</section>
+    <!-- Working Hours -->
+    <section class="workHours mt-5 container">
+        <div class="row align-items-md-stretch">
+            <div class="col-md-6 d-flex justify-content-center align-items-center"
+                 data-aos="fade-right">
+                <img src="~/images/Home assests/workHRS.png" height="70%" alt="workHRs" />
+              
+                
+            </div>
+            <div class="col-md-5 d-flex align-items-center" data-aos="fade-left">
+                <div class="p-5 rounded-4" style="background-color: #f8ece0">
+                    <h2 class=""
+                        style="font-size: 50px; font-weight: 900; color: #03193f">
+                        Home sweet bakery
+                    </h2>
+                    <p class="text-secondary">
+                        It is a long established fact that a reader will be distracted by
+                        the readable content of a page when looking at its layout. The
+                        point of using Lorem Ipsum is that it has a more-or-less normal
+                        distribution of letters, as opposed to using 'Content here,
+                        content here', making it look like readable English.
+                    </p>
+                    <h2 class="fw-bold" style="color: #03193f; font-style: italic">
+                        Opening Hours :
+                    </h2>
 
-    .testimonial-card {
-        background-color: #fff9f4;
-        border-radius: 20px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        padding: 20px;
-        transition: all 0.3s ease-in-out;
-    }
+                    <p class="d-flex gap-5">
+                        <span class="fw-bold text-secondary">Sunday - Thursday</span>
+                        <span class="fw-medium" style="color: #b28158">09.00 - 16.00</span>
+                    </p>
 
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-        }
-</style>
+                    <p class="d-flex gap-5">
+                        <span class="fw-bold text-secondary">Sunday - Thursday</span>
+                        <span class="fw-medium" style="color: #b28158">09.00 - 16.00</span>
+                    </p>
 
-<!-- Hero Section -->
-<div class="hero-section">
-    <div class="hero-overlay">
-        <h1 class="display-4 fw-bold">About Us</h1>
-    </div>
-</div>
-
-<!-- Welcome Section -->
-<div class="container my-5">
-    <div class="row align-items-center p-4 rounded-4 beige-bg shadow-lg border" style="border: 2px solid #e0c8a7;">
-        <div class="col-md-6 mb-4 mb-md-0">
-            <img src="/images/about2.jpg" class="img-fluid-custom" alt="Bakery Setup" />
+                    <img src="images /Home assests /dividert.png" width="100%" alt="" />
+                    <img style="width: 40%" src="images/Home assests/logo.png" alt="" />
+                </div>
+            </div>
         </div>
-        <div class="col-md-6 animate-fade">
-            <h2 class="fw-bold beige-text">Home sweet bakery</h2>
-            <p class="text-muted">
-                At our bakery, we believe in the joy of freshly baked goods. Each product is made with love and care to give you a warm, sweet experience.
-            </p>
-            <h5 class="fw-bold">Opening Hours :</h5>
+    </section>
+
+    <!-- satistics -->
+
+    <section class="stats mt-4" data-aos="zoom-in">
+        <div class="overlay"></div>
+        <div class="stats-text">
+            <h1>We Are The Best</h1>
             <p>
-                Sunday - Thursday: <strong>9:00 - 18:00</strong><br />
-                Friday - Saturday: <strong>11:00 - 20:00</strong>
+                <span>50+</span>
+                <span>Deliveries a day</span>
+            </p>
+            <p>
+                <span>60+</span>
+                <span>Reservations a day</span>
             </p>
         </div>
-    </div>
-</div>
+    </section>
 
-<!-- Stats Section -->
-<div class="text-white text-center py-5"
-     style="background-image: url('/images/about3.jpg'); background-size: cover; background-position: center;">
-    <div class="bg-dark bg-opacity-50 p-4 rounded-3 d-inline-block">
-        <h2 class="mb-4 fw-bold">We Are The Best</h2>
-        <h4>500+ Deliveries a day</h4>
-        <h4>100+ Reservations a day</h4>
-    </div>
-</div>
+    <!-- reviews -->
+    <section class="reviews mt-5">
+        <div class="container py-4">
+            <div class="review-header shadow" data-aos="fade-up">
+                <h2>REVIEW 4.8 ⭐</h2>
+                <p>HUNDREDS OF PEOPLE LOVED US</p>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <div class="review-card shadow" data-aos="zoom-out-up">
+                        <p class="mb-0">Bernice Miguez - 2 photos</p>
+                        <p class="mb-0">
+                            ★★★★★ The sweets and snacks from Palkhi are super yummy every
+                            time! They sent my favorites today, and I really like them, the
+                            taste is so much better than others. Yum!
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="review-card shadow" data-aos="zoom-out-up">
+                        <p class="mb-0">Anjali Mishra - 3 photos</p>
+                        <p class="mb-0">
+                            ★★★★★ Ordered food today after a week-long break from ordering
+                            from them, especially the appetizers and chocolates. Snacks are
+                            delicious but nothing in the Maharashtrian special category.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="review-card shadow" data-aos="zoom-out-up">
+                        <p class="mb-0">Global Zak - 8 photos</p>
+                        <p class="mb-0">
+                            ★★★★★ The order was really good, the packaging was really good,
+                            the local Maharashtrian delivery service wasn't better than the
+                            one Palkhi provides. Ready-to-eat Maharashtrian snacks! More
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="review-card shadow" data-aos="zoom-out-up">
+                        <p class="mb-0">Arun Mahajan - 11 photos</p>
+                        <p class="mb-0">
+                            ★★★★★ The order was really awesome, I am so happy that my dear
+                            Palkhi delivered my order with care. The delivery service was
+                            slow but the order was delivered with care, I recommend this to
+                            everyone!
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="review-card shadow" data-aos="zoom-out-up">
+                        <p class="mb-0">Arushi Sharma - 6 photos</p>
+                        <p class="mb-0">
+                            ★★★★★ No one can beat the taste from Palkhi, wish you guys more
+                            success! The true taste of Maharashtra.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="review-card shadow" data-aos="zoom-out-up">
+                        <p class="mb-0">Anusha Mahajan - 2 photos</p>
+                        <p class="mb-0">
+                            ★★★★★ Ordered today, thank you for this awesome taste of laddu
+                            and puranpolis. Everything delicious, mind-blowing experience,
+                            you guys rock! 😍
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Reviews Section -->
-<div class="container my-5">
-    <h3 class="text-center mb-4 beige-text">Hundreds of People Loved Us</h3>
+</body>
 
-    <div class="row g-4">
-        <div class="col-md-6">
-            <div class="testimonial-card">
-                <p>"Amazing service and the croissants are to die for!"</p>
-                <strong>- Mariam B.</strong>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="testimonial-card">
-                <p>"Best bakery in town. Friendly staff and cozy place."</p>
-                <strong>- Heba N.</strong>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="testimonial-card">
-                <p>"Delicious cakes. Always fresh and made with care."</p>
-                <strong>- Menna E.</strong>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="testimonial-card">
-                <p>"We always order from here for family gatherings."</p>
-                <strong>- Fatma N.</strong>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="testimonial-card">
-                <p>"The pastries are always fresh and full of flavor!"</p>
-                <strong>- Eman K.</strong>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Footer Section -->
-<footer class="bg-dark text-white py-4 mt-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 mb-3">
-                <h5>Bakery</h5>
+    <!-- footer -->
+    <footer class="container-fluid py-5 border-top"
+            style="background-color: #212529"
+            data-aos="fade-up"
+            data-aos-duration="800">
+        <div class="row text-white text-center text-sm-start">
+            <div class="col-12 col-sm-6 col-md-3 mb-4">
+                <img src="images/Home assests/logo.png"
+                     class="img-fluid w-50 mb-2"
+                     alt="Logo" />
+                <p class="mb-0">© 2025</p>
             </div>
-            <div class="col-md-4 mb-3">
-                <h6>Section</h6>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="text-white text-decoration-none">Home</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Menu</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Reservation</a></li>
+
+            <div class="col-6 col-md-3 mb-4">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-white">Home</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-white">Features</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-white">Pricing</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-white">FAQs</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-white">About</a>
+                    </li>
                 </ul>
             </div>
-            <div class="col-md-4 mb-3">
-                <h6>Section</h6>
-                <ul class="list-unstyled">
-                    <li><a href="#" class="text-white text-decoration-none">Contact</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">About</a></li>
-                    <li><a href="#" class="text-white text-decoration-none">Log In</a></li>
+
+            <div class="col-6 col-md-3 mb-4">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-white">Home</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-white">Features</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-white">Pricing</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-white">FAQs</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-white">About</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-12 col-md-3 mb-4">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-white">Home</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-white">Features</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-white">Pricing</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-white">FAQs</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="#" class="nav-link p-0 text-white">About</a>
+                    </li>
                 </ul>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+</html>
+
