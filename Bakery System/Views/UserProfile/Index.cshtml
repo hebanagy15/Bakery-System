@@ -1,0 +1,210 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bakery - User Profile</title>
+    <link rel="stylesheet" href="UserProfile/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+ 
+         <nav class="navbar">
+        <div class="navbar-left">
+            <img src="UserProfile/css/logo.png" alt="Bakery Logo" class="logo">
+        </div>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <ul class="navbar-menu" id="navbar-menu">
+            <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li><a asp-controller="About" asp-action="Index">About Us</a></li>
+            <li><a asp-controller="Menu" asp-action="Index">Menu</a></li>
+            <li><a asp-controller="Reservation" asp-action="Create">Reservation</a></li>
+            <li><a asp-controller="Review" asp-action="Contact">Contact Us</a></li>
+           
+        </ul>
+       <div class="navbar-right" id="navbar-right">
+    <div class="user-profile-image-container">
+        <img  src="UserProfile/css/user-4.jpg" alt="User Profile Image" class="user-profile-image">
+    </div>
+</div>
+    </nav>
+     
+     
+     
+     
+   
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navbarMenu = document.getElementById('navbar-menu');
+        const navbarRight = document.getElementById('navbar-right');
+
+        menuToggle.addEventListener('click', () => {
+            navbarMenu.classList.toggle('show');
+            navbarRight.classList.toggle('show');
+            menuToggle.classList.toggle('open');
+        });
+    </script>
+
+
+
+
+   
+    <!-- Main Content -->
+    <main>
+        <section class="user-profile">
+            <h2>User Profile</h2>
+            <div class="profile-info">
+                <div class="profile-image">
+                    <img src="UserProfile/css/user-4.jpg" alt="User Profile Image">
+                </div>
+                <div class="profile-details">
+                    <h3>Alaa Mohamed</h3>
+                    <p class="user-type">Client</p>
+                    <p class="user-location">European (The TEST), Cairo Uni</p>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="reservation-btn navigate-button" data-url="@Url.Action("Create", "Reservation")">Make Reservation</button>
+                <button class="delivery-btn navigate-button" data-url="@Url.Action("Index", "Menu")">Order Delivery</button>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const navigateButtons = document.querySelectorAll('.navigate-button');
+                        navigateButtons.forEach(button => {
+                            button.addEventListener('click', function() {
+                                const url = this.getAttribute('data-url');
+                                if (url) {
+                                    window.location.href = url;
+                                }
+                            });
+                        });
+                    });
+                </script>
+            </div>
+
+            <!-- Reservations Table -->
+            <div class="table-container reservations-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Reservation Date</th>
+                            <th>Time</th>
+                            <th>Guests Number</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>11/1/2025</td>
+                            <td>20:10</td>
+                            <td>1</td>
+                            <td class="status past">Past</td>
+                        </tr>
+                        <tr>
+                            <td>15/2/2025</td>
+                            <td>18:00</td>
+                            <td>2</td>
+                            <td class="status past">Past</td>
+                        </tr>
+                        <tr>
+                            <td>18/3/2025</td>
+                            <td>12:30</td>
+                            <td>5</td>
+                            <td class="status upcoming">Up Coming</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Delivery Orders Table -->
+            <div class="table-container delivery-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Delivery Date</th>
+                            <th>Number of Items</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>11/1/2025</td>
+                            <td>5</td>
+                            <td>100 EGP</td>
+                            <td class="status past">Past</td>
+                        </tr>
+                        <tr>
+                            <td>15/2/2025</td>
+                            <td>7</td>
+                            <td>200 EGP</td>
+                            <td class="status past">Past</td>
+                        </tr>
+                        <tr>
+                            <td>18/3/2025</td>
+                            <td>8</td>
+                            <td>300 EGP</td>
+                            <td class="status upcoming">Up Coming</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="cart-button">
+                <button class="go-to-cart">GO TO CART >></button>
+            </div>
+        </section>
+    </main>
+    
+<!-- footer -->
+   <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <img src="UserProfile/css/logo white.png" alt="Bakery Logo" class="footer-logo">
+      <div class="footer-copy">© 2025</div>
+    </div>
+    <div class="footer-section">
+      <h4>Section</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Section</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Section</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+</body>
+</html>
