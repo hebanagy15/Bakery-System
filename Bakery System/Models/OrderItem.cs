@@ -11,6 +11,7 @@ namespace Bakery_System.Models
         [Range(1, 1000)]
         public int Quantity { get; set; }
 
+        
         [Required]
         [ForeignKey("OrderId")]
         public int OrderId { get; set; }

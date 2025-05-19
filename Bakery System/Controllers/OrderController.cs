@@ -1,68 +1,82 @@
 ﻿using Bakery_System.Models;
+using Bakery_System.ViewModels;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 
 namespace Bakery_System.Controllers
 {
     public class OrderController : Controller
     {
         private readonly ApplicationDbContext _context;
+       
 
-        public OrderController(ApplicationDbContext context)
+        public OrderController(ApplicationDbContext context )
         {
             _context = context;
+         
         }
 
-        // GET: Order/Create
-        public IActionResult Create()
+        
+
+        [HttpPost]
+        public IActionResult AddToCart(int productId, int quantity)
         {
-            ViewBag.BakeryItems = new SelectList(_context.BakeryItems, "ID", "Name");
-            ViewBag.Customers = new SelectList(_context.Customers, "ID", "Name");
+            
+                var product = _context.BakeryItems.FirstOrDefault(p => p.ID == productId);
+                if (product == null)
+                {
+                    return NotFound();
+                }
+
+
+            ViewBag.ProductName = product.Name;
+            ViewBag.Price = product.Price;
+            ViewBag.Quantity = quantity;
+
+
+
+
+            return View(); 
+        }
+
+
+
+        [HttpPost]
+        public IActionResult Create(OrderViewModel model , decimal Price)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            string fullName = $"{model.FirstName} {model.LastName}";
+
+            
+            var customer = _context.Customers.FirstOrDefault(c => c.FullName == fullName && c.Email == model.Email);
+
+            if (customer == null)
+            {
+                ModelState.AddModelError("", "Customer not found.");
+                return View("AddToCart", model);
+
+            }
 
             var order = new Order
             {
+                CustomerId = customer.ID,
+                PaymentMethod = model.PaymentMethod,
+                Status = model.Status,
+                TotalPrice = Price,
                 OrderDate = DateTime.Now,
-                OrderItems = new List<OrderItem> { new OrderItem() }
+                
             };
 
-            return View(order);
+            _context.Orders.Add(order);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index","Menu"); 
         }
 
-        // POST: Order/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(Order order)
-        {
-            if (ModelState.IsValid)
-            {
-
-
-                var errors = ModelState.Values.SelectMany(v => v.Errors).ToList();
-                order.CustomerId = 1;
-                order.Status = "Pending";
-                order.TotalPrice = 0;
-                foreach (var item in order.OrderItems)
-                {
-                    var bakeryItem = _context.BakeryItems.FirstOrDefault(b => b.ID == item.BakeryItemId);
-                    if (bakeryItem != null)
-                    {
-                        order.TotalPrice += bakeryItem.Price * item.Quantity;
-                    }
-                }
-
-                _context.Orders.Add(order);
-                _context.SaveChanges();
-                return RedirectToAction("Success");
-            }
-
-            ViewBag.BakeryItems = new SelectList(_context.BakeryItems, "ID", "Name");
-            ViewBag.Customers = new SelectList(_context.Customers, "ID", "Name");
-            return View(order);
-        }
-
-        public IActionResult Success()
-        {
-            return View();
-        }
+       
     }
 }

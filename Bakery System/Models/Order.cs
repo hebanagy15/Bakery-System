@@ -13,6 +13,7 @@ namespace Bakery_System.Models
         [StringLength(50)]
         public string Status { get; set; }
 
+        
         [Required]
         [Range(0.01, 10000)]
         public decimal TotalPrice { get; set; }
