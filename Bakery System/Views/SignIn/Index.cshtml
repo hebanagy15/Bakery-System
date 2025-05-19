@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model Bakery_System.Models.ViewModels.SignInViewModel
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -9,7 +11,7 @@
 
 </head>
 <body>
-    <!-- NavBat -->
+    <!-- NavBar -->
     <nav class="navbar navbar-expand-lg shadow"
          style="background-color: #e5dccb">
         <div class="container-fluid mx-2">
@@ -48,29 +50,34 @@
                 </ul>
                 <div class="d-flex gap-3">
                     <span class="navbar-text">
-                        <a asp-controller="Account" asp-action="SignUp">Sign Up</a>
+                        <a asp-controller="Register" asp-action="Index">Sign Up</a>
                     </span>
                     <span class="navbar-text"> | </span>
                     <span class="navbar-text">
-                        <a asp-controller="Account" asp-action="SignIn">Sign In</a>
+                        <a asp-controller="SignIn" asp-action="Index">Sign In</a>
                     </span>
                 </div>
 
             </div>
         </div>
     </nav>
-    <!-- sign up -->
+    <!-- sign in -->
     <div class="hero">
         <div class="form-container">
             <h2>Login</h2>
 
             <p class="p">
-                Don't have an account? <span class="span">Sign Up</span>
+                Don't have an account?<a asp-controller="Register" asp-action="Index" class="span">Sign Up</a>
             </p>
 
-            <form>
-                <input type="email" placeholder="username@gmail.com" required />
-                <input type="password" placeholder="Password" required />
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <form asp-controller="SignIn" asp-action="SignIn" method="post">
+                <input type="email" placeholder="username@gmail.com"  asp-for="Email" required />
+                 <span asp-validation-for="Email" class="text-danger"></span>
+                <input type="password" placeholder="Password" asp-for="Password" required />
+                <span asp-validation-for="Password" class="text-danger"></span>
+
                 <div class="flex-row">
                     <span class="span">Forgot password?</span>
                 </div>

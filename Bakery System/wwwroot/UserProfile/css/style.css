@@ -1,0 +1,490 @@
+:root {
+    --primary-dark: #2d3436;
+    --primary-light: #f3e4d5;
+    --accent-orange: #e17055;
+    --text-light: #ffffff;
+    --status-past: #d3d3d3;
+    --status-upcoming: #e17055;
+    --table-header: #a67c52;
+    --button-brown: #a67c52;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+body {
+    background-image: url('9696253\ 1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--text-light);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding-bottom: 60px;
+    position: relative;
+}
+
+/* nav */
+
+
+.navbar {
+    background: #e5ddca;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 32px 0 32px;
+    border-bottom: 2px solid #e5ddca;
+    height: 60px;
+    position: relative;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 140px;
+    margin-right: 8px;
+    object-fit: contain;
+}
+
+.brand {
+    font-size: 2rem;
+    color: #49443d;
+    font-family: 'Georgia', serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 36px;
+}
+
+.navbar-menu li {
+    position: relative;
+}
+
+.navbar-menu a {
+    text-decoration: none;
+    color: #49443d;
+    font-size: 1.1rem;
+    padding: 8px 0;
+    transition: color 0.2s;
+    font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.auth-link {
+    color: #49443d;
+    text-decoration: underline;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.auth-link:hover {
+    color: #8d7b5c;
+}
+
+.divider {
+    color: #49443d;
+    font-size: 1.2rem;
+    margin: 0 4px;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 16px;
+}
+
+.menu-toggle .bar {
+    width: 28px;
+    height: 3px;
+    background: #49443d;
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+menu-toggle.open .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.menu-toggle.open .bar:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.open .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+    .navbar-menu,
+    .navbar-right {
+        gap: 18px;
+    }
+    .brand {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .navbar {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px 12px 0 12px;
+    }
+
+    .navbar-left {
+        flex: 1 1 100px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .navbar-menu,
+    .navbar-right {
+        display: none;
+        flex-direction: column;
+        background: #e5ddca;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        align-items: flex-start;
+        padding: 16px 0 16px 32px;
+        box-shadow: 0 4px 12px #0001;
+        z-index: 10;
+    }
+
+    .navbar-menu.show,
+    .navbar-right.show {
+        display: flex;
+    }
+
+    .navbar-menu li {
+        margin-bottom: 10px;
+    }
+
+    .navbar-menu li:last-child {
+        margin-bottom: 0;
+    }
+
+    .navbar-right {
+        padding-left: 32px;
+        gap: 8px;
+    }
+}
+
+/* userprofile */
+main {
+    width: 100%;
+    height: 1200px;
+}
+
+.user-profile {
+    width: 100%;
+    background-color: rgba(21, 26, 27, 0.37);
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.user-profile h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--text-light);
+    font-size: 1.8rem;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.profile-image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--button-brown);
+    object-fit: cover;
+}
+
+.profile-details {
+    margin-right: 20px;
+}
+
+.profile-details h3 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.user-type, .user-location {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    opacity: 0.8;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0 30px;
+}
+
+.action-buttons button {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reservation-btn {
+    background-color: var(--button-brown);
+    color: var(--text-light);
+}
+
+.delivery-btn {
+    background-color: var(--text-light);
+    color: var(--primary-dark);
+}
+
+.reservation-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.delivery-btn:hover{
+      
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  
+}
+/* Tables Styles */
+.table-container {
+    margin-bottom: 30px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: var(--table-header);
+    color: var(--text-light);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: center;
+    color: var(--primary-dark);
+}
+
+th {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgba(242, 242, 242, 0.7);
+}
+
+.status {
+    font-weight: 600;
+}
+
+.status.past {
+    color: var(--status-past);
+}
+
+.status.upcoming {
+    color: var(--status-upcoming);
+}
+
+/* Cart Button */
+.cart-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.go-to-cart {
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+    border: none;
+    padding: 10px 30px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.go-to-cart:hover {
+        background-color: var(--button-brown);
+
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+.footer {
+  background: #232528;
+  color: #fff;
+  padding: 40px 20px 30px;
+  border-radius: 0 0 8px 8px;
+  width: 100%;
+  /* margin: 0 auto; */
+  box-sizing: border-box;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap; /* السماح بالتفاف العناصر */
+  gap: 30px;
+}
+
+.footer-brand {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 180px;
+}
+
+.footer-logo {
+  width: 160px;
+  margin-bottom: 12px;
+  max-width: 100%;
+  height: auto;
+}
+
+.footer-copy {
+  color: #ccc;
+  font-size: 1rem;
+}
+
+.footer-section {
+  flex: 1 1 150px;
+  min-width: 150px;
+}
+
+.footer-section h4 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.footer-section ul li a:hover {
+  color: #d1b97f;
+}
+
+
+
+
+
+
+
+
+
+/* ميديا كويري للشاشات المتوسطة */
+@media (max-width: 900px) {
+  .footer-container {
+    gap: 20px;
+  }
+  .footer-section,
+  .footer-brand {
+    min-width: 140px;
+  }
+  .footer-logo {
+    width: 140px;
+  }
+}
+
+/* ميديا كويري للشاشات الصغيرة */
+@media (max-width: 700px) {
+  .footer-container {
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+  }
+  .footer-section,
+  .footer-brand {
+    width: 100%;
+    min-width: auto;
+  }
+  .footer-logo {
+    width: 120px;
+  }
+}
+
+
+
+
+
+
+
+
+.user-profile-image-container {
+    width: 40px; /* Adjust the size as needed */
+    height: 40px; /* Make width and height the same for a circle */
+    border-radius: 50%; /* This is the key to making it a circle */
+    overflow: hidden; /* Hides any part of the image that goes beyond the circle */
+    border: 2px solid #ccc; /* Optional: Add a border around the circle */
+}
+
+.user-profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire container without distortion */
+}

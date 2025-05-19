@@ -6,7 +6,7 @@ namespace Bakery_System
 {
     public class ApplicationDbContext : DbContext
     {
-       
+
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
