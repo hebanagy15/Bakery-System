@@ -1,6 +1,9 @@
 ﻿using Bakery_System.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Globalization; 
+using System.Threading.Tasks;
 
 namespace Bakery_System.Controllers
 {
@@ -16,27 +19,43 @@ namespace Bakery_System.Controllers
         // GET: Reservation/Create
         public IActionResult Create()
         {
-            ViewData["Tables"] = _context.Tables.ToList();
-            ViewData["Customers"] = _context.Customers.ToList();
             return View();
         }
 
         // POST: Reservation/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ReservationDate, DurationInHours, TableId, CustomerId")] Reservation reservation)
+        public async Task<IActionResult> Create(DateTime date, string time, int guests)
         {
             if (ModelState.IsValid)
             {
-                reservation.CreationDate = DateTime.Now;
-                _context.Add(reservation);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index", "Home"); 
+                // Parse the time string into a DateTime object
+                if (DateTime.TryParseExact(time, "h:mm tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedTime))
+                {
+                    var reservation = new Reservation
+                    {
+                        ReservationDate = date.Date + parsedTime.TimeOfDay,
+                        TableId = 1,
+                        CustomerId = 1,
+                        CreationDate = DateTime.Now,
+                        DurationInHours = guests <= 2 ? 1 : (guests <= 4 ? 2 : 3),
+                        Time = time,
+                        Guests = guests
+
+                    };
+
+                    _context.Add(reservation);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    // If parsing fails, add an error to ModelState
+                    ModelState.AddModelError("Time", "ERROR ");
+                }
             }
 
-            ViewData["Tables"] = _context.Tables.ToList();
-            ViewData["Customers"] = _context.Customers.ToList();
-            return View(reservation);
+            return View();
         }
     }
 }

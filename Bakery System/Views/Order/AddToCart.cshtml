@@ -63,12 +63,15 @@
                     </li>
 
           </ul>
-          <div class="d-flex gap-3">
-            <span class="navbar-text"> <a href="">Sign Up</a> </span>
-            <span class="navbar-text"> | </span>
-            <span class="navbar-text"> <a href="">Sign In</a> </span>
-          </div>
-        </div>
+                <div class="d-flex gap-3">
+                    <span class="navbar-text">
+                        <a asp-controller="Register" asp-action="Index">Sign Up</a>
+                    </span>
+                    <span class="navbar-text"> | </span>
+                    <span class="navbar-text">
+                        <a asp-controller="SignIn" asp-action="Index">Sign In</a>
+                    </span>
+                </div>
       </div>
     </nav>
     <!-- cart -->

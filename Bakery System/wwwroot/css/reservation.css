@@ -1,15 +1,4 @@
-﻿.reservation-hero {
-    position: relative;
-    background: url('/images/Home assests/reservation-bg.png') center/cover no-repeat;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.reservation-container {
-    position: relative;
+﻿
     min-height: 100vh;
     padding: 30px 15px;
     background: transparent;
@@ -29,10 +18,29 @@
     width: 30rem;
 }
 
-    .reservation-card .form-select {
-        border-radius: 8px;
-        text-align: center;
-    }
+.reservation-card .form-select {
+    border-radius: 8px;
+    text-align: center;
+    color: #333; /* تغيير لون النص إلى لون أغمق */
+    background-color: #f8f9fa; /* تغيير لون الخلفية إلى لون أفتح */
+    border: 1px solid #ced4da; /* إضافة حد رمادي فاتح */
+}
+
+.reservation-card .form-select option {
+    color: #333; /* التأكد من أن لون نص الخيارات أيضًا ليس أبيض */
+    background-color: #fff; /* لون الخلفية الافتراضي للخيارات */
+}
+
+/* تخصيص لون الخلفية عند التمرير أو التحديد */
+.reservation-card .form-select option:hover,
+.reservation-card .form-select option:checked {
+    background-color: #e9ecef; /* لون خلفية عند التمرير أو التحديد */
+}
+
+/* تخصيص لون نص الـ placeholder (إذا كان موجودًا) */
+.reservation-card .form-select::placeholder {
+    color: #6c757d;
+}
 
 .btn-book-now {
     background-color: #6d5334 !important;
@@ -42,6 +50,6 @@
     transition: 0.3s;
 }
 
-    .btn-book-now:hover {
-        background-color: #5a452b !important;
-    }
+.btn-book-now:hover {
+    background-color: #5a452b !important;
+}

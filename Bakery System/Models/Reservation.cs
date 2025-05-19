@@ -36,8 +36,10 @@ namespace Bakery_System.Models
         [ForeignKey("CustomerId")]
         public Customer Customer { get; set; } // Navigation Property
 
-        
+        public string Time { get; set; }
 
-        
+        public int Guests { get; set; }
+
+
     }
 }

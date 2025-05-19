@@ -1,5 +1,6 @@
 using Bakery_System.Models; // Replace with your actual namespace
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
 namespace Bakery_System.Controllers // Replace with your actual namespace
@@ -21,19 +22,25 @@ namespace Bakery_System.Controllers // Replace with your actual namespace
 
         // POST: /Register
         [HttpPost]
-        public async Task<IActionResult> Register(Customer customer) 
+        public async Task<IActionResult> Register(Customer customer)
         {
+            // Check if the email is already registered
+            if (await _context.Customers.AnyAsync(c => c.Email == customer.Email))
+            {
+                ModelState.AddModelError("Email", "This email address is already registered.");
+                return View("Index");
+            }
+
             if (ModelState.IsValid)
             {
-                customer.Password = HashPassword(customer.Password); // Implement your secure hashing
+                customer.Password = HashPassword(customer.Password);
                 _context.Customers.Add(customer);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index","SignIn"); // Redirect to the Index action in SignInController
-            }
-           
-            return View("Index"); 
-        }
+                return RedirectToAction("Index", "SignIn"); // Redirect to the Index action in SignInController
+            }
 
+            return View("Index");
+        }
         private string HashPassword(string password)
         {
             // Replace this with your actual secure password hashing implementation
