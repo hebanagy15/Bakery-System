@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\Items\" />
+    <Folder Include="wwwroot\Fonts\" />
   </ItemGroup>
 
 </Project>

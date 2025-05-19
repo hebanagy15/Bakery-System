@@ -1,0 +1,136 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/Home css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/ContactUs.css" />
+    <title>Contact</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <img src="images/Home assests/logo.png" alt="Bakery Logo" class="logo">
+        </div>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <ul class="navbar-menu" id="navbar-menu">
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+            <li class="nav-item navbar-item">
+                <a class="nav-link" asp-controller="About" asp-action="Index">About US</a>
+            </li>
+            <li class="nav-item navbar-item">
+                <a class="nav-link" asp-controller="Menu" asp-action="Index">Menu</a>
+            </li>
+            <li class="nav-item navbar-item">
+                <a class="nav-link" asp-controller="Reservation" asp-action="Create">Reservation</a>
+            </li>
+            <li class="nav-item navbar-item">
+                <a class="nav-link" asp-controller="ContactUs" asp-action="Index">Contact Us</a>
+
+            </li>
+        </ul>
+        <div class="d-flex gap-3">
+            <span class="navbar-text">
+                <a asp-controller="Account" asp-action="SignUp">Sign Up</a>
+            </span>
+            <span class="navbar-text"> | </span>
+            <span class="navbar-text">
+                <a asp-controller="Account" asp-action="SignIn">Sign In</a>
+            </span>
+    </nav>
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navbarMenu = document.getElementById('navbar-menu');
+        const navbarRight = document.getElementById('navbar-right');
+
+        menuToggle.addEventListener('click', () => {
+            navbarMenu.classList.toggle('show');
+            navbarRight.classList.toggle('show');
+            menuToggle.classList.toggle('open');
+        });
+    </script>
+
+    <section class="contact-section">
+        <div class="overlay">
+            <h1>Get in touch</h1>
+            <p>Reach out, and let’s create a universe of possibilities together!</p>
+
+            <div class="form-container">
+                <div class="form-box">
+                    <h2>Feel Free to Send Us Any Comment</h2>
+                    <p>Let’s align our considerations! Reach out and let the magic of collaboration illuminate our skies.</p>
+
+                    <form method="post">
+                        <div class="input-group">
+                            <input type="text" name="lastName" placeholder="Last Name" required />
+                            <input type="text" name="firstName" placeholder="First Name" required />
+                        </div>
+                        <input type="email" name="email" placeholder="Email" required />
+                        <input type="tel" name="phoneNumber" placeholder="Phone Number" />
+                        <textarea name="message" placeholder="Message" required></textarea>
+                        <button type="submit">Send</button>
+                    </form>
+                </div>
+                
+                <div class="image-box">
+                    <div class="image-overlay-text">
+                        “Two lunar months revealed Earth’s fragile beauty against vast silence, transforming my view of our place in the universe.”
+                        <br><br><h3>Italo Tralista</h3>
+                    </div>
+                    <img src="images/Home assests/photo.jpg" alt="Pastry" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+           
+            <div class="footer-brand">
+                <img src="images/Home assests/logo.png" alt="Bakery Logo" class="footer-logo">
+                <div class="footer-copy">© 2025</div>
+            </div>
+            <div class="footer-section">
+                <h4>Section</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Section</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Section</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

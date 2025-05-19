@@ -21,7 +21,7 @@ namespace Bakery_System
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Review> Reviews { get; set; }
 
-
+        public DbSet<ContactUs> ContactUs { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
