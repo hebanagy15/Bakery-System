@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Reservation";
 }
 
@@ -13,202 +12,153 @@
     <link rel="stylesheet" href="~/css/Home css/bootstrap.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-          rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <title>Bakery</title>
 </head>
 
-
 <body>
 
+    <!-- NavBar -->
     <header>
-        <!-- NavBat -->
-        <nav class="navbar navbar-expand-lg shadow"
-             style="background-color: #e5dccb">
+        <nav class="navbar navbar-expand-lg shadow" style="background-color: #e5dccb">
             <div class="container-fluid mx-2">
                 <a class="navbar-brand" href="#">
-                    <img style="width: 40%" src="~/images/Home assests/logo.png" alt="" />
+                    <img style="width: 40%" src="~/images/Home assests/logo.png" alt="Logo" />
                 </a>
-                <button class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarText"
-                        aria-controls="navbarText"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-medium gap-4"
-                        style="font-size: 17px; border-bottom: 2px solid #ad9781">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item navbar-item">
-                            <a class="nav-link" asp-controller="About" asp-action="Index">About US</a>
-                        </li>
-                        <li class="nav-item navbar-item">
-                            <a class="nav-link" asp-controller="Menu" asp-action="Index">Menu</a>
-                        </li>
-                        <li class="nav-item navbar-item">
-                            <a class="nav-link" asp-controller="Reservation" asp-action="Create">Reservation</a>
-                        </li>
-                        <li class="nav-item navbar-item">
-                            <a class="nav-link" asp-controller="Review" asp-action="Contact">Contact Us</a>
-
-                        </li>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-medium gap-4" style="font-size: 17px; border-bottom: 2px solid #ad9781">
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="About" asp-action="Index">About US</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Menu" asp-action="Index">Menu</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="Reservation" asp-action="Create">Reservation</a></li>
+                        <li class="nav-item"><a class="nav-link" asp-controller="ContactUs" asp-action="Index">Contact Us</a></li>
                     </ul>
                     <div class="d-flex gap-3">
-                        <span class="navbar-text"> <a href="">Sign Up</a> </span>
-                        <span class="navbar-text"> | </span>
-                        <span class="navbar-text"> <a href="">Sign In</a> </span>
+                        <span class="navbar-text"><a href="#">Sign Up</a></span>
+                        <span class="navbar-text">|</span>
+                        <span class="navbar-text"><a href="#">Sign In</a></span>
                     </div>
                 </div>
             </div>
         </nav>
     </header>
 
-
-    
-
+    <!-- Hero Section -->
     <!-- Hero Section -->
     <section class="reservation-hero">
         <div class="hero-content" data-aos="fade-up" data-aos-duration="800">
-            <!-- reservation content -->
-            <section class="reservation-container container-fluid d-flex justify-content-center align-items-center"
-                     data-aos="fade-up"
-                     data-aos-duration="800">
+            <section class="reservation-container container-fluid d-flex justify-content-center align-items-center" data-aos="fade-up" data-aos-duration="800">
                 <div class="reservation-card px-4 px-md-5 py-5">
-                    <h4 class="text-center fw-bold text-white mb-4">
-                        Make Your Reservation
-                    </h4>
+                    <h4 class="text-center fw-bold text-white mb-4">Make Your Reservation</h4>
 
-                    <div class="row text-white text-center mb-4">
-                        <div class="col-12 col-md-4 mb-3 mb-md-0">
-                            <p class="mb-1 fw-semibold">Date</p>
-                            <select class="form-select text-center bg-transparent border-0 text-white px-3">
-                                <!-- display options -->
-                                <option>Today</option>
-                            </select>
+                    <!-- Start of Form -->
+                    <form method="post" asp-controller="Reservation" asp-action="Create">
+                        <div class="row text-white text-center mb-4">
+                            <!-- Date -->
+                            <div class="col-12 col-md-4 mb-3 mb-md-0">
+                                <p class="mb-1 fw-semibold">Date</p>
+                                <input name="Date" type="date" class="form-control text-center bg-transparent border-0 text-white px-3" required />
+                            </div>
+
+                            <!-- Time -->
+                            <div class="col-12 col-md-4 mb-3 mb-md-0">
+                                <p class="mb-1 fw-semibold">Time</p>
+                                <select name="Time" class="form-select text-center bg-transparent border-0 text-white px-3" required>
+                                    <option value="10:00 AM">10:00 AM</option>
+                                    <option value="12:00 PM">12:00 PM</option>
+                                    <option value="2:00 PM">2:00 PM</option>
+                                    <option value="4:00 PM">4:00 PM</option>
+                                    <option value="6:00 PM">6:00 PM</option>
+                                    <option value="8:00 PM">8:00 PM</option>
+                                </select>
+                            </div>
+
+                            <!-- Guests -->
+                            <div class="col-12 col-md-4">
+                                <p class="mb-1 fw-semibold">Guests</p>
+                                <select name="Guests" class="form-select text-center bg-transparent border-0 text-white px-4" required>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">+6</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="col-12 col-md-4 mb-3 mb-md-0">
-                            <p class="mb-1 fw-semibold">Time</p>
-                            <select class="form-select text-center bg-transparent border-0 text-white px-3">
-                                <!-- display options -->
 
-                                <option>00 : 00</option>
-                            </select>
+                        <p class="notice text-center small mb-4 text-secondary">
+                            Please Notice that there is a 100 EGP
+                            <span class="text-danger ps-1 fw-bold">deposite</span>
+                        </p>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-book-now px-5 py-2 text-white">
+                                Book Now
+                            </button>
                         </div>
-                        <div class="col-12 col-md-4">
-                            <p class="mb-1 fw-semibold">Guests</p>
-                            <select class="form-select text-center bg-transparent border-0 text-white px-4">
-                                <!-- display options -->
+                    </form>
+                    <!-- End of Form -->
 
-                                <option>2</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <p class="notice text-center small mb-4 text-secondary">
-                        Please Notice that there is a 100 EGP
-                        <span class="text-danger ps-1 fw-bold">deposite</span>
-                    </p>
-
-                    <div class="text-center">
-                        <button class="btn btn-book-now px-5 py-2 text-white">
-                            Book Now
-                        </button>
-                    </div>
                 </div>
             </section>
         </div>
     </section>
 
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="container-fluid py-5 border-top" style="background-color: #212529" data-aos="fade-up" data-aos-duration="800">
+        <div class="row text-white text-center text-sm-start">
+            <div class="col-12 col-sm-6 col-md-3 mb-4">
+                <img src="~/images/Home assests/logo.png" class="img-fluid w-50 mb-2" alt="Logo" />
+                <p class="mb-0">© 2025</p>
+            </div>
+
+            <div class="col-6 col-md-3 mb-4">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Home</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Features</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Pricing</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">FAQs</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">About</a></li>
+                </ul>
+            </div>
+
+            <div class="col-6 col-md-3 mb-4">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Home</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Features</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Pricing</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">FAQs</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">About</a></li>
+                </ul>
+            </div>
+
+            <div class="col-12 col-md-3 mb-4">
+                <h5>Section</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Home</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Features</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">Pricing</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">FAQs</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-white">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+
 </body>
-<!-- Footer -->
-
-<footer class="container-fluid py-5 border-top"
-        style="background-color: #212529"
-        data-aos="fade-up"
-        data-aos-duration="800">
-    <div class="row text-white text-center text-sm-start">
-        <div class="col-12 col-sm-6 col-md-3 mb-4">
-            <img src="~/images/Home assests/logo.png"
-                 class="img-fluid w-50 mb-2"
-                 alt="Logo" />
-            <p class="mb-0">© 2025</p>
-        </div>
-
-        <div class="col-6 col-md-3 mb-4">
-            <h5>Section</h5>
-            <ul class="nav flex-column">
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">Home</a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">Features</a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">Pricing</a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">FAQs</a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">About</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="col-6 col-md-3 mb-4">
-            <h5>Section</h5>
-            <ul class="nav flex-column">
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">Home</a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">Features</a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">Pricing</a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">FAQs</a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">About</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="col-12 col-md-3 mb-4">
-            <h5>Section</h5>
-            <ul class="nav flex-column">
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">Home</a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">Features</a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">Pricing</a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">FAQs</a>
-                </li>
-                <li class="nav-item mb-2">
-                    <a href="#" class="nav-link p-0 text-white">About</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</footer>
-
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-</script>
-
 </html>

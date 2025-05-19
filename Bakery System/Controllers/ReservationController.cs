@@ -14,39 +14,29 @@ namespace Bakery_System.Controllers
         }
 
         // GET: Reservation/Create
-        public IActionResult create()
+        public IActionResult Create()
         {
-            ViewBag.Customers = _context.Customers.ToList();
-            ViewBag.Tables = _context.Tables.ToList();
+            ViewData["Tables"] = _context.Tables.ToList();
+            ViewData["Customers"] = _context.Customers.ToList();
             return View();
         }
 
         // POST: Reservation/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Reservation reservation)
+        public async Task<IActionResult> Create([Bind("ReservationDate, DurationInHours, TableId, CustomerId")] Reservation reservation)
         {
-            // Debugging - Optional
-            Console.WriteLine("---- Incoming Reservation Data ----");
-            Console.WriteLine($"CustomerId: {reservation.CustomerId}");
-            Console.WriteLine($"TableId: {reservation.TableId}");
-            Console.WriteLine($"ReservationDate: {reservation.ReservationDate}");
-            Console.WriteLine($"Duration: {reservation.DurationInHours}");
-
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                ViewBag.Customers = _context.Customers.ToList();
-                ViewBag.Tables = _context.Tables.ToList();
-                return View(reservation);
+                reservation.CreationDate = DateTime.Now;
+                _context.Add(reservation);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index", "Home"); 
             }
 
-            reservation.CreationDate = DateTime.Now;
-
-            _context.Reservations.Add(reservation);
-            await _context.SaveChangesAsync();
-
-            TempData["Success"] = "Reservation created successfully!";
-            return RedirectToAction("Create");
+            ViewData["Tables"] = _context.Tables.ToList();
+            ViewData["Customers"] = _context.Customers.ToList();
+            return View(reservation);
         }
     }
 }
